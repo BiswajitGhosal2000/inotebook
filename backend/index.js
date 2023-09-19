@@ -3,7 +3,7 @@ const express = require('express');
 
 connectDB();
 const app = express()
-const port = 3000
+const port = process.env.NODE_PORT || 5000
 
 //Available routes
 app.use(express.json())
