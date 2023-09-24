@@ -8,7 +8,7 @@ const Note = require('../models/Note');
 //Route 1: Add a new note using: POST "/api/note/addnote". Login required
 router.post('/addnote', fetchuser, [
     body('title', "title should be minimum 3 characters long").isLength({ min: 3 }),
-    body('description', "description should be minimum 5 characters long").isLength({ min: 5 }),
+    body('description', "description should be minimum 5 characters long").isLength({ min: 5 })
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -18,7 +18,7 @@ router.post('/addnote', fetchuser, [
         const note = await Note.create({ title: req.body.title, description: req.body.description, tag: req.body.tag, user: req.user })
         // console.log(note)
         res.json({
-            Response: "Note Added Successfully",
+            note
         });
     } catch (error) {
         console.log(error.message);
