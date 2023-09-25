@@ -15,6 +15,7 @@ router.post('/createuser', [
     body('email', 'Enter Valid Email').isEmail(),
     body('password', 'Password must be 5 characters').isLength({ min: 5 })
 ], async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
@@ -33,7 +34,8 @@ router.post('/createuser', [
             password: securePassword
         });
         const authToken = jwt.sign({ user: user._id }, JWT_SECRET)
-        res.json({ authToken })
+        success = true;
+        res.json({ success, authToken })
     }
     catch (err) {
         console.log(err)
@@ -46,6 +48,7 @@ router.post('/login', [
     body('password', 'Password cannot be blank').exists()
 ], async (req, res) => {
     const errors = validationResult(req);
+    let success = false;
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
@@ -54,14 +57,17 @@ router.post('/login', [
     try {
         let user = await User.findOne({ email });
         if (!user) {
+            success = false;
             return res.status(400).json({ error: "Please try to login with correct credentials" })
         }
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
+            success = false;
             return res.status(400).json({ error: "Please try to login with correct credentials" })
         }
-        const authToken = jwt.sign({ user: user._id }, JWT_SECRET)
-        res.json({ authToken })
+        const authToken = jwt.sign({ user: user._id }, JWT_SECRET);
+        success = true;
+        res.json({ success, authToken })
 
     } catch (error) {
         res.status(500).send("Internal Server Error")
