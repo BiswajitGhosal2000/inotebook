@@ -9,7 +9,7 @@ function NoteItem(props) {
             <div className="card my-3" key={note.id}>
                 <div className="card-header d-flex justify-content-between">
                     <h6>{note.title}</h6>
-                    <p className='text-muted ' style={{ fontSize: ".7rem" }}>Last Updated: <i>{note.date}</i></p>
+                    <p className='text-muted ' style={{ fontSize: ".7rem" }}>Last Updated: <i>{note.date.split("T")[0]}</i></p>
 
                 </div>
                 <div className="card-body" style={{ minHeight: "20vh" }}>

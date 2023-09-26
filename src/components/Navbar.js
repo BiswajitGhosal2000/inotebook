@@ -15,9 +15,6 @@ export const Navbar = () => {
         if (localStorage.getItem('token')) {
             getUser();
         }
-        else {
-            navigate('/login');
-        }
         // eslint-disable-next-line
     }, [user, navigate])
     return (
