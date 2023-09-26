@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
     const [credentials, setCredentials] = useState({
         name: "", email: "", password: "", cpassword: ""
     });
-    let history = useHistory();
+    let navigate = useNavigate();
     const onChange = (e) => {
         e.preventDefault();
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -27,7 +27,7 @@ function Signup() {
         if (json.success) {
             //save the auth token and redirect
             localStorage.setItem('token', json.authToken);
-            history.push("/");
+            navigate("/");
         } else {
             alert("Invalid Credentials");
         }

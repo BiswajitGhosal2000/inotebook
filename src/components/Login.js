@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [credentials, setCredentials] = useState({
         email: "", password: ""
     });
-    let history = useHistory();
+    let navigate = useNavigate();
     const onChange = (e) => {
         e.preventDefault();
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -22,11 +22,10 @@ function Login() {
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
         const json = await response.json();
-        console.log(json);
         if (json.success) {
             //save the auth token and redirect
             localStorage.setItem('token', json.authToken);
-            history.push("/");
+            navigate("/");
         } else {
             alert("Invalid Credentials");
         }

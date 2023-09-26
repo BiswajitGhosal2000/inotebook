@@ -8,24 +8,26 @@ import { Contact } from './components/Contact';
 import NoteState from './context/notes/NoteState';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import AuthState from './context/auth/AuthState';
 
 
 function App() {
   return (
-    <NoteState>
-      <BrowserRouter>
-        <Navbar />
-        {/* <Alert message="Custom Alert" /> */}
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route exact path='/login' element={<Login />} />
-          <Route exact path='/signup' element={<Signup />} />
-          <Route exact path='/about' element={<About />} />
-          <Route exact path='/contact' element={<Contact />} />
-        </Routes>
-      </BrowserRouter>
-    </NoteState>
-
+    <AuthState>
+      <NoteState>
+        <BrowserRouter>
+          <Navbar />
+          {/* <Alert message="Custom Alert" /> */}
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/login' element={<Login />} />
+            <Route exact path='/signup' element={<Signup />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/contact' element={<Contact />} />
+          </Routes>
+        </BrowserRouter>
+      </NoteState>
+    </AuthState>
   );
 }
 

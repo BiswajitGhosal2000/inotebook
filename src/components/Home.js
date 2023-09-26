@@ -1,15 +1,29 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Notes from './Notes';
 import AddNotes from './AddNotes';
 
 
 export const Home = () => {
+    const navigate = useNavigate();
+    const user = localStorage.getItem('token');
+    useEffect(() => {
+        if (!user) {
+            navigate('/login');
+        }
+    }, [user, navigate])
+
     return (
-        <div className='container border bg-light'>
-            <AddNotes />
-            <hr />
-            <Notes />
-        </div>
+        <>
+            {user ? (
+                <div className='container border bg-light d-flex'>
+                    <Notes />
+                    <AddNotes />
+                </div>
+            ) : (
+                navigate('/login')
+            )}
+        </>
+
     )
 }

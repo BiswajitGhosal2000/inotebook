@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
-    const host = "http://127.0.0.1:5000"
-    // const [notes, setNotes] = useState();
-    const [notes, setNotes] = useState([]);
 
+    const host = "http://127.0.0.1:5000"
+    const [notes, setNotes] = useState([]);
 
     //Get all notes
     const getNotes = async () => {
@@ -16,8 +15,7 @@ const NoteState = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUwYmZhY2U1M2ZiYTllN2QyNGRhNGM4IiwiaWF0IjoxNjk1MjgzOTU5fQ._8qmaAdtir1Dgw29tAXlJ9OrSMwrz1TcypS-15YM93M"
-                //localStorage.getItem('token')
+                "auth-token": localStorage.getItem('token')
             },
 
         });
@@ -27,7 +25,7 @@ const NoteState = (props) => {
 
     //Add a note
     const addNote = async (title, description, tag) => {
-        console.log("Adding a new note");
+        // console.log("Adding a new note");
         //API call
         const url = `${host}/api/note/addnote`;
         // console.log(url)
@@ -35,8 +33,7 @@ const NoteState = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUwYmZhY2U1M2ZiYTllN2QyNGRhNGM4IiwiaWF0IjoxNjk1MjgzOTU5fQ._8qmaAdtir1Dgw29tAXlJ9OrSMwrz1TcypS-15YM93M"
-                //localStorage.getItem('token')
+                "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({ title, description, tag })
         });
@@ -53,14 +50,13 @@ const NoteState = (props) => {
         const response = fetch(url, {
             method: 'DELETE',
             headers: {
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUwYmZhY2U1M2ZiYTllN2QyNGRhNGM4IiwiaWF0IjoxNjk1MjgzOTU5fQ._8qmaAdtir1Dgw29tAXlJ9OrSMwrz1TcypS-15YM93M"
-                //localStorage.getItem('token')
+                "auth-token": localStorage.getItem('token')
             },
         });
 
         //Logic to delete in client
         setNotes(notes.filter((note) => { return note._id !== id }));
-        console.log("Deleting a note" + id);
+        // console.log("Deleting a note" + id);
         return response;
     }
     //Edit a note
@@ -71,8 +67,7 @@ const NoteState = (props) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUwYmZhY2U1M2ZiYTllN2QyNGRhNGM4IiwiaWF0IjoxNjk1MjgzOTU5fQ._8qmaAdtir1Dgw29tAXlJ9OrSMwrz1TcypS-15YM93M"
-                //localStorage.getItem('token')
+                "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({ title, description, tag })
         });
