@@ -20,7 +20,7 @@ function NoteItem(props) {
                 <div className="card-footer d-flex justify-content-around">
                     <p >Tag:<span className='text-muted'>{note.tag}</span></p>
                     <div className='d-flex'>
-                        <p className='mx-4' style={{ cursor: "pointer" }} onClick={updateNote(note)}><i className="fa-solid fa-file-pen"></i></p>
+                        <p className='mx-4' style={{ cursor: "pointer" }} onClick={() => updateNote(note)}><i className="fa-solid fa-file-pen"></i></p>
                         <p className='mx-4' style={{ cursor: "pointer" }} onClick={() => { if (window.confirm("Are You Sure?")) { deleteNote(note._id) } }}><i className="fa-solid fa-trash-can"></i></p>
                     </div>
                 </div>

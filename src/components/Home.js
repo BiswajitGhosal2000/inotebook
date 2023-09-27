@@ -7,11 +7,13 @@ import AddNotes from './AddNotes';
 export const Home = () => {
     const navigate = useNavigate();
     const user = localStorage.getItem('token');
+
     useEffect(() => {
         if (!user) {
             navigate('/login');
         }
     }, [user, navigate])
+
 
     return (
         <>

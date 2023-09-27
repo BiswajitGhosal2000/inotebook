@@ -7,7 +7,8 @@ export const Navbar = () => {
     let location = useLocation();
     const { user, getUser } = useContext(AuthContext);
     const navigate = useNavigate();
-    const logout = () => {
+    const logout = (e) => {
+        e.preventDefault();
         localStorage.removeItem('token');
         navigate('/login');
     }
@@ -20,7 +21,7 @@ export const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary text-light">
             <div className="container-fluid">
-                <Link className={`navbar-brand nav-link ${location.pathname === "/" ? "active" : ""}`} to="/"><img src={logo} height={50} width={50} alt='logo' /><strong>iNoteBook</strong></Link>
+                <Link className={`navbar-brand nav-link ${location.pathname === "/" ? "active" : ""}`} to="/"><img src={logo} height={40} width={40} alt='logo' />iNoteBook</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
