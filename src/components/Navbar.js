@@ -19,7 +19,7 @@ export const Navbar = () => {
         // eslint-disable-next-line
     }, [user, navigate])
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary text-light">
+        <nav className="navbar navbar-expand-lg navbar-dark text-light" style={{ backgroundColor: "	#020079" }}>
             <div className="container-fluid">
                 <Link className={`navbar-brand nav-link ${location.pathname === "/" ? "active" : ""}`} to="/"><img src={logo} height={40} width={40} alt='logo' />iNoteBook</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

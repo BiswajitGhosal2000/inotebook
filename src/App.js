@@ -9,6 +9,7 @@ import NoteState from './context/notes/NoteState';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AuthState from './context/auth/AuthState';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route exact path='/about' element={<About />} />
             <Route exact path='/contact' element={<Contact />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </NoteState>
     </AuthState>

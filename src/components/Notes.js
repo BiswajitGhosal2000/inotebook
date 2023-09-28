@@ -11,7 +11,7 @@ export default function Notes() {
     useEffect(() => {
         getNotes();
         // eslint-disable-next-line
-    }, [])
+    }, [notes])
     const onChange = (e) => {
         setENote({
             ...enote,
@@ -57,7 +57,7 @@ export default function Notes() {
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="edescription" className="form-label" >Note Description <sup className='text-danger'>*</sup></label>
-                                    <textarea className="form-control" id="edescription" rows="10" name="edescription" minLength={5} required onChange={onChange} value={enote.edescription}></textarea>
+                                    <textarea className="form-control" id="edescription" rows="5" name="edescription" minLength={5} required onChange={onChange} value={enote.edescription}></textarea>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="etag" className="form-label" >Note Tag </label>
@@ -73,7 +73,7 @@ export default function Notes() {
                 </div>
             </div>
             <div className="row">
-                <h3 className='text-center bg-primary text-light'>Your Notes</h3>
+                <h3 className='text-center text-light'>Your Notes</h3>
                 {notes.length === 0 && 'No Notes to Display'}
                 {
                     notes.map((note) => {

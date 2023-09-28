@@ -8,11 +8,11 @@ function NoteItem(props) {
         <div className="col-md-4">
             <div className="card my-3" key={note.id}>
                 <div className="card-header d-flex justify-content-between">
-                    <h6>{note.title}</h6>
-                    <p className='text-muted ' style={{ fontSize: ".7rem" }}>Last Updated: <i>{note.date.split("T")[0]}</i></p>
+                    <h6>{note.title.substring(0, 10)}...</h6>
+                    <p className='text-muted ' style={{ fontSize: ".5rem" }}>Date: <i>{note.date.split("T")[0]}</i></p>
 
                 </div>
-                <div className="card-body" style={{ minHeight: "20vh" }}>
+                <div className="card-body" id='noteitembody'>
 
                     <p className="card-text">{note.description}</p>
 
