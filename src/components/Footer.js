@@ -2,8 +2,8 @@ import React from 'react';
 
 function Footer() {
     return (
-        <nav class="navbar " id='footer'>
-            <div class="container-fluid">
+        <nav className="navbar " id='footer'>
+            <div className="container-fluid">
                 <h6>iNoteBook</h6>
                 <p>Developed by <i>Biswajit Ghosal</i></p>
             </div>

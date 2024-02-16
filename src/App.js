@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
-// import Alert from './components/Alert';
+import Alert from './components/Alert';
 import NoteState from './context/notes/NoteState';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -18,7 +18,7 @@ function App() {
       <NoteState>
         <BrowserRouter>
           <Navbar />
-          {/* <Alert message="Custom Alert" /> */}
+          <Alert message="Custom Alert" type="info" />
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route exact path='/login' element={<Login />} />

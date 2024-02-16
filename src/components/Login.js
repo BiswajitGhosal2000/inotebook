@@ -2,10 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Alert from './Alert';
+
 function Login() {
     const [credentials, setCredentials] = useState({
         email: "", password: ""
     });
+    const [alert, setAlert] = useState({ type: '', message: '' });
     let navigate = useNavigate();
     const onChange = (e) => {
         e.preventDefault();
@@ -32,12 +35,16 @@ function Login() {
             localStorage.setItem('token', json.authToken);
             navigate("/");
         } else {
-            alert("Invalid Credentials");
+            // alert("Invalid Credentials");
+            setAlert({ type: 'danger', message: json.error });
         }
 
     }
     return (
         <div className="container w-50 border my-5 bg-info">
+            {alert.message && (
+                <Alert type={alert.type} message={alert.message} />
+            )}
             <h2 className='text-center'>LOGIN</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group ">
